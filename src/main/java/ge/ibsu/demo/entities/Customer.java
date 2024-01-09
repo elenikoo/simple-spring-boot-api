@@ -1,2 +1,4 @@
-package ge.ibsu.demo.entities;public class Customer {
+package ge.ibsu.demo.entities;
+
+public class Customer {
 }

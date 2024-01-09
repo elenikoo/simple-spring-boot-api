@@ -1,2 +1,4 @@
-package ge.ibsu.demo.services;public class AddressService {
+package ge.ibsu.demo.services;
+
+public class AddressService {
 }

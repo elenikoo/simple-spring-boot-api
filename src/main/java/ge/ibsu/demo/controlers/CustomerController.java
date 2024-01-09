@@ -1,2 +1,12 @@
-package ge.ibsu.demo.controlers;public class CustomerController {
+package ge.ibsu.demo.controlers;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/customer")
+public class CustomerController {
+
+
+
 }
