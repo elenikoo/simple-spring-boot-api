@@ -1,4 +1,2 @@
-package ge.ibsu.demo.repositories;
-
-public class CustomerRepository {
+package ge.ibsu.demo.repositories;public interface CustomerRepository {
 }
