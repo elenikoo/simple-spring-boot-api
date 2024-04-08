@@ -1,6 +1,8 @@
 package ge.ibsu.demo.repositories;
 
+import ge.ibsu.demo.dto.FilmInfo;
 import ge.ibsu.demo.entities.Film;
+import ge.ibsu.demo.entities.Language;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,9 +13,14 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FilmRepository extends JpaRepository<Film, Long> {
 
-    @Query("SELECT f FROM Film f " +
-            "WHERE (:title IS NULL OR f.title LIKE %:title%) " +
-            "AND (:description IS NULL OR f.description LIKE %:description%) " +
-            "AND (:releaseYear IS NULL OR f.releaseYear = :releaseYear) " )
-    Page<Film> searchFilms(@Param("title") String title, @Param("description") String description, @Param("releaseYear") Integer releaseYear, Pageable pageable);
+    @Query("SELECT NEW FilmInfo(f.title, f.description, f.rating) " +
+            "FROM Film f " +
+            "WHERE f.title = :title AND f.description = :description " +
+            "AND f.release_year = :release_year AND f.language = :language")
+    Page<FilmInfo>searchFilm(@Param("title") String title,
+                             @Param("description") String description,
+                             @Param("release_year") Integer release_year,
+                             @Param("language") Language language,
+                             Pageable pageable);
+
 }

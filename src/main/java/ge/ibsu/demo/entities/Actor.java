@@ -17,6 +17,8 @@ public class Actor {
 
     @Column(name = "last_name")
     private String lastName;
+    @Column(name = "last_update")
+    private String lastUpdate;
 
     public Long getId() {
         return id;
@@ -40,5 +42,13 @@ public class Actor {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(String lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 }

@@ -1,6 +1,9 @@
 package ge.ibsu.demo.controlers;
 
+import ge.ibsu.demo.dto.FilmInfo;
+import ge.ibsu.demo.dto.RequestData;
 import ge.ibsu.demo.dto.SearchCustomer;
+import ge.ibsu.demo.dto.SearchFilm;
 import ge.ibsu.demo.entities.Customer;
 import ge.ibsu.demo.entities.Film;
 import ge.ibsu.demo.services.FilmService;
@@ -27,16 +30,9 @@ public class FilmController {
     }
 
 
-    @GetMapping("/films")
-    public ResponseEntity<Page<Film>> searchFilms(
-            @RequestParam(required = false) String title,
-            @RequestParam(required = false) String description,
-            @RequestParam(required = false) Integer releaseYear,
-            @RequestParam(required = false) String language,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
-
-        Page<Film> films = filmService.searchFilms(title, description, releaseYear, language, page, size);
-        return new ResponseEntity<>(films, HttpStatus.OK);
+    @RequestMapping(value = "/search", method = RequestMethod.POST, produces = {"application/json"})
+    public Page<FilmInfo> searchFilms(@RequestBody RequestData<SearchFilm> rd) throws Exception {
+        GeneralUtil.checkRequiredProperties(rd.getData(), Arrays.asList("title", "description", "release_year", "language"));
+        return filmService.search(rd.getData(), rd.getPaging());
     }
 }
