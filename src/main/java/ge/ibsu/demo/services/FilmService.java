@@ -35,7 +35,4 @@ public class FilmService {
         return filmRepository.searchFilm(searchFilm.getTitle(), searchFilm.getDescription(), searchFilm.getRelease_year(), searchFilm.getLanguage(), pageable);
     }
 
-
-
-
 }

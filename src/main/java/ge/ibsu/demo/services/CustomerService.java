@@ -1,13 +1,16 @@
 package ge.ibsu.demo.services;
 
-import ge.ibsu.demo.dto.AddCustomer;
-import ge.ibsu.demo.dto.SearchCustomer;
+import ge.ibsu.demo.dto.*;
 import ge.ibsu.demo.entities.Address;
 import ge.ibsu.demo.entities.Customer;
 import ge.ibsu.demo.repositories.CustomerRepository;
 import ge.ibsu.demo.util.GeneralUtil;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -62,5 +65,10 @@ public class CustomerService {
     public List<Customer> search(SearchCustomer searchCustomer) {
         String searchText = searchCustomer.getSearchText() != null ? "%" + searchCustomer.getSearchText() + "%" : "";
         return customerRepository.searchWithNative(searchCustomer.getActive(), searchText);
+    }
+
+    public Page<CustomerInfo> findCustomer(Paging paging){
+        Pageable pageable = PageRequest.of(paging.getPage() - 1, paging.getSize(), Sort.by("id").descending());
+        return customerRepository.findCustomer(pageable);
     }
 }
