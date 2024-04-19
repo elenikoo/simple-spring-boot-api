@@ -3,22 +3,20 @@ package ge.ibsu.demo.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "city")
+@Table(name = "CITY")
 public class City {
 
     @Id
-    @SequenceGenerator(name = "city_city_id_seq", sequenceName = "city_city_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "city_city_id_seq")
-    @Column(name = "city_id")
+    @Column(name = "CITY_ID")
     private Long id;
 
-    @Column(name = "city")
+    @Column(name = "CITY")
     private String city;
 
-    public City(Long id, String city) {
-        this.id = id;
-        this.city = city;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "COUNTRY_ID")
+    private Country country;
+
 
     public Long getId() {
         return id;
@@ -34,5 +32,13 @@ public class City {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }
