@@ -13,14 +13,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FilmRepository extends JpaRepository<Film, Long> {
 
-    @Query("SELECT NEW FilmInfo(f.title, f.description, f.rating) " +
-            "FROM Film f " +
-            "WHERE f.title = :title AND f.description = :description " +
-            "AND f.release_year = :release_year AND f.language = :language")
-    Page<FilmInfo>searchFilm(@Param("title") String title,
-                             @Param("description") String description,
-                             @Param("release_year") Integer release_year,
-                             @Param("language") Language language,
-                             Pageable pageable);
+    @Query("select new ge.ibsu.demo.dto.FilmInfo(f.title, f.description, f.rating) From Film f where " +
+            "concat(f.title, ' ', f.description, ' ', f.release_year, ' ', f.language) like %:searchValue%")
+    Page<FilmInfo> searchFilm(Pageable pageable, @Param("searchValue") String searchValue);
 
 }

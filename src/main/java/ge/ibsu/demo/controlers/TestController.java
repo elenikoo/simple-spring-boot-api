@@ -15,7 +15,7 @@ public class TestController {
         return "Hello From Server";
     }
 
-    @RequestMapping(value = "/hello", method = RequestMethod.GET, produces = {"application/json"})
+    @RequestMapping(value = "/test", method = RequestMethod.GET, produces = {"application/json"})
     public TestPerson test(TestPerson testPerson){
         testPerson.setFirstName((testPerson.getFirstName() + "from server"));
         return testPerson;

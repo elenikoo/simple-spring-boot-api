@@ -1,5 +1,6 @@
 package ge.ibsu.demo.services;
 
+import ge.ibsu.demo.dto.CityWithCountry;
 import ge.ibsu.demo.entities.City;
 import ge.ibsu.demo.repositories.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,9 @@ public class CityService {
 
     public void removeCity(Long id) {
         cityRepository.deleteById(id);
+    }
+
+    public List<CityWithCountry>searchCityWithCountry(){
+        return cityRepository.searchCityWithCountry();
     }
 }

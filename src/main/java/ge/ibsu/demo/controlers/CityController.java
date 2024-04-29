@@ -1,5 +1,6 @@
 package ge.ibsu.demo.controlers;
 
+import ge.ibsu.demo.dto.CityWithCountry;
 import ge.ibsu.demo.entities.City;
 import ge.ibsu.demo.services.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,13 @@ public class CityController {
         cityService.removeCity(cityId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @RequestMapping(value = "/searchCityWithCountry", method = RequestMethod.GET, produces = {"application/json"})
+    public List<CityWithCountry>searchCityWithCountry(){
+        return cityService.searchCityWithCountry();
+    }
+
+
 
 
 }

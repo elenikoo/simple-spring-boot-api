@@ -1,11 +1,14 @@
 package ge.ibsu.demo.controlers;
 
 import ge.ibsu.demo.dto.AddCustomer;
+import ge.ibsu.demo.dto.CustomerAddressInfo;
+import ge.ibsu.demo.dto.RequestData;
 import ge.ibsu.demo.dto.SearchCustomer;
 import ge.ibsu.demo.entities.Customer;
 import ge.ibsu.demo.services.CustomerService;
 import ge.ibsu.demo.util.GeneralUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -54,5 +57,11 @@ public class CustomerController {
     public List<Customer> search(@RequestBody SearchCustomer searchCustomer) throws Exception {
         GeneralUtil.checkRequiredProperties(searchCustomer, Arrays.asList("active", "searchText"));
         return customerService.search(searchCustomer);
+    }
+
+    @RequestMapping(value = "/searchCustomerAddress", method = RequestMethod.POST, produces = {"application/json"})
+    public Page<CustomerAddressInfo> searchCustomerAddress(@RequestBody RequestData<SearchCustomer> rd) throws Exception {
+        GeneralUtil.checkRequiredProperties(rd.getData(), Arrays.asList("active", "searchText"));
+        return customerService.searchCustomerAddress(rd.getData(), rd.getPaging());
     }
 }

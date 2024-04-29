@@ -1,9 +1,15 @@
 package ge.ibsu.demo.dto;
 
 public class ActorInfo {
-
     private String firstName;
-    private String LastName;
+    private String lastName;
+
+    public ActorInfo(){}
+
+    public ActorInfo(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -14,10 +20,10 @@ public class ActorInfo {
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        LastName = lastName;
+        this.lastName = lastName;
     }
 }

@@ -4,6 +4,7 @@ public class FilmInfo {
     private String title;
     private String description;
     private String rating;
+    public FilmInfo(){ }
 
     public FilmInfo(String title, String description, String rating) {
         this.title = title;
