@@ -1,6 +1,5 @@
 package ge.ibsu.demo.entities;
 
-<<<<<<< HEAD
 import jakarta.persistence.*;
 
 @Entity
@@ -18,24 +17,6 @@ public class Country {
     @Column(name = "last_update")
     private String lastUpdate;
 
-=======
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "COUNTRY")
-public class Country {
-
-    @Id
-    @Column(name = "COUNTRY_ID")
-    private Long id;
-
-    @Column(name = "COUNTRY")
-    private String country;
-
->>>>>>> 545224674a9835e550928842bd00c572d2be29cd
     public Long getId() {
         return id;
     }
@@ -51,7 +32,6 @@ public class Country {
     public void setCountry(String country) {
         this.country = country;
     }
-<<<<<<< HEAD
 
     public String getLastUpdate() {
         return lastUpdate;
@@ -60,6 +40,4 @@ public class Country {
     public void setLastUpdate(String lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
-=======
->>>>>>> 545224674a9835e550928842bd00c572d2be29cd
 }
