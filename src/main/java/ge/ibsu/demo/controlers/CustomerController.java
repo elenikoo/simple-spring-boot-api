@@ -1,9 +1,13 @@
 package ge.ibsu.demo.controlers;
 
+<<<<<<< HEAD
 import ge.ibsu.demo.dto.AddCustomer;
 import ge.ibsu.demo.dto.CustomerAddressInfo;
 import ge.ibsu.demo.dto.RequestData;
 import ge.ibsu.demo.dto.SearchCustomer;
+=======
+import ge.ibsu.demo.dto.*;
+>>>>>>> 545224674a9835e550928842bd00c572d2be29cd
 import ge.ibsu.demo.entities.Customer;
 import ge.ibsu.demo.services.CustomerService;
 import ge.ibsu.demo.util.GeneralUtil;
@@ -58,10 +62,19 @@ public class CustomerController {
         GeneralUtil.checkRequiredProperties(searchCustomer, Arrays.asList("active", "searchText"));
         return customerService.search(searchCustomer);
     }
+<<<<<<< HEAD
 
     @RequestMapping(value = "/searchCustomerAddress", method = RequestMethod.POST, produces = {"application/json"})
     public Page<CustomerAddressInfo> searchCustomerAddress(@RequestBody RequestData<SearchCustomer> rd) throws Exception {
         GeneralUtil.checkRequiredProperties(rd.getData(), Arrays.asList("active", "searchText"));
         return customerService.searchCustomerAddress(rd.getData(), rd.getPaging());
     }
+=======
+    @RequestMapping(value = "/searchAddress", method = RequestMethod.POST, produces = {"application/json"})
+    public Page<CustomerAddressInfo> searchAddress(@RequestBody RequestData<SearchCustomer> rd) throws Exception {
+        GeneralUtil.checkRequiredProperties(rd.getData(), Arrays.asList("active", "searchText"));
+        return customerService.searchAddress(rd.getData(), rd.getPaging());
+    }
+
+>>>>>>> 545224674a9835e550928842bd00c572d2be29cd
 }

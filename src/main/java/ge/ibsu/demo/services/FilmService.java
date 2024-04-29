@@ -34,6 +34,9 @@ public class FilmService {
         return filmRepository.searchFilm(pageable, searchText);
     }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 545224674a9835e550928842bd00c572d2be29cd
 }

@@ -4,11 +4,19 @@ public class CustomerAddressInfo {
     private String firstName;
     private String lastName;
     private String street;
+<<<<<<< HEAD
 
     private String city;
     private String country;
 
     public CustomerAddressInfo(){}
+=======
+    private String city;
+    private String country;
+
+    public CustomerAddressInfo() {
+    }
+>>>>>>> 545224674a9835e550928842bd00c572d2be29cd
 
     public CustomerAddressInfo(String firstName, String lastName, String street, String city, String country) {
         this.firstName = firstName;

@@ -1,9 +1,13 @@
 package ge.ibsu.demo.services;
 
+<<<<<<< HEAD
 import ge.ibsu.demo.dto.AddCustomer;
 import ge.ibsu.demo.dto.CustomerAddressInfo;
 import ge.ibsu.demo.dto.Paging;
 import ge.ibsu.demo.dto.SearchCustomer;
+=======
+import ge.ibsu.demo.dto.*;
+>>>>>>> 545224674a9835e550928842bd00c572d2be29cd
 import ge.ibsu.demo.entities.Address;
 import ge.ibsu.demo.entities.Customer;
 import ge.ibsu.demo.repositories.CustomerRepository;
@@ -70,9 +74,20 @@ public class CustomerService {
         return customerRepository.searchWithNative(searchCustomer.getActive(), searchText);
     }
 
+<<<<<<< HEAD
     public Page<CustomerAddressInfo>searchCustomerAddress(SearchCustomer searchCustomer, Paging paging){
         String searchText = searchCustomer.getSearchText() != null ? "%" + searchCustomer.getSearchText() + "%" : "";
         Pageable pageable = PageRequest.of(paging.getPage() - 1, paging.getSize(), Sort.by("id").descending());
         return customerRepository.searchCustomerAddress(searchCustomer.getActive(), searchText, pageable);
+=======
+    public Page<CustomerInfo> findCustomer(Paging paging){
+        Pageable pageable = PageRequest.of(paging.getPage() - 1, paging.getSize(), Sort.by("id").descending());
+        return customerRepository.findCustomer(pageable);
+    }
+    public Page<CustomerAddressInfo> searchAddress(SearchCustomer searchCustomer, Paging paging) {
+        String searchText = searchCustomer.getSearchText() != null ? "%" + searchCustomer.getSearchText() + "%" : "";
+        Pageable pageable = PageRequest.of(paging.getPage() - 1, paging.getSize(), Sort.by("id").descending());
+        return customerRepository.searchAddressInfo(searchCustomer.getActive(), searchText, pageable);
+>>>>>>> 545224674a9835e550928842bd00c572d2be29cd
     }
 }
