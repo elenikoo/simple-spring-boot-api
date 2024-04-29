@@ -59,7 +59,6 @@ public class CustomerController {
         return customerService.search(searchCustomer);
     }
 
-
     @RequestMapping(value = "/searchCustomerAddress", method = RequestMethod.POST, produces = {"application/json"})
     public Page<CustomerAddressInfo> searchCustomerAddress(@RequestBody RequestData<SearchCustomer> rd) throws Exception {
         GeneralUtil.checkRequiredProperties(rd.getData(), Arrays.asList("active", "searchText"));

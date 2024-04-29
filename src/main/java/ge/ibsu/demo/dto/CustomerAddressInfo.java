@@ -4,8 +4,6 @@ public class CustomerAddressInfo {
     private String firstName;
     private String lastName;
     private String street;
-
-
     private String city;
     private String country;
 

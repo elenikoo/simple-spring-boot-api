@@ -71,7 +71,7 @@ public class CustomerService {
         Pageable pageable = PageRequest.of(paging.getPage() - 1, paging.getSize(), Sort.by("id").descending());
         return customerRepository.searchCustomerAddress(searchCustomer.getActive(), searchText, pageable);
     }
-    
+
     public Page<CustomerInfo> findCustomer(Paging paging){
     Pageable pageable = PageRequest.of(paging.getPage() - 1, paging.getSize(), Sort.by("id").descending());
     return  customerRepository.findCustomer(pageable);
