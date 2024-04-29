@@ -25,9 +25,8 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
             "concat(first_name, concat(' ', last_name)) like :searchValue", nativeQuery = true)
     List<Customer> searchWithNative(@Param("active") Integer active, @Param("searchValue") String searchValue);
 
-    @Query("select new ge.ibsu.demo.dto.CustomerInfo(c.firstName, c.lastName, c.address.address) From Customer c where c.active = :active and " +
-            "concat(c.firstName, concat(' ', c.lastName)) like :searchValue")
-    Page<CustomerInfo> searchInfo(@Param("active") Integer active, @Param("searchValue") String searchValue, Pageable pageable);
+    @Query("select new ge.ibsu.demo.dto.CustomerInfo(c.firstName, c.lastName) from Customer c")
+    Page<CustomerInfo> findCustomer(Pageable pageable);
 
     @Query("select new ge.ibsu.demo.dto.CustomerAddressInfo(c.firstName, c.lastName, c.address.address, c.address.city.city, c.address.city.country.country) " +
             "From Customer c " +

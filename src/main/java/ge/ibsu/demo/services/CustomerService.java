@@ -66,16 +66,10 @@ public class CustomerService {
         return customerRepository.searchWithNative(searchCustomer.getActive(), searchText);
     }
 
-    public Page<CustomerAddressInfo>searchCustomerAddress(SearchCustomer searchCustomer, Paging paging) {
-        String searchText = searchCustomer.getSearchText() != null ? "%" + searchCustomer.getSearchText() + "%" : "";
+    public  Page<CustomerInfo> findCustomer(Paging paging){
         Pageable pageable = PageRequest.of(paging.getPage() - 1, paging.getSize(), Sort.by("id").descending());
-        return customerRepository.searchCustomerAddress(searchCustomer.getActive(), searchText, pageable);
+        return  customerRepository.findCustomer(pageable);
     }
-
-    public Page<CustomerInfo> findCustomer(Paging paging){
-    Pageable pageable = PageRequest.of(paging.getPage() - 1, paging.getSize(), Sort.by("id").descending());
-    return  customerRepository.findCustomer(pageable);
-}
 
     public Page<CustomerAddressInfo> searchAddressInfo(SearchCustomer searchCustomer, Paging paging){
         String searchText = searchCustomer.getSearchText() != null ? "%" + searchCustomer.getSearchText() + "%" : "";
